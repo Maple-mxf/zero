@@ -1,3 +1,4 @@
+
 package sort
 
 import (
@@ -10,52 +11,33 @@ type Num interface {
 
 // 快速排序算法定义：选择一个基准元素pivot，定义两个指针，left和right
 // left指向第一个元素，right指向第二个元素，从right指针开始，
-// 如果right指针指向的元素小于基准元素，则替换
+// 如果right指针指向的元素小于基准元素，·1
 // QuickSort 快速排序算法
 func QuickSort[T Num](nums []T) {
 	_quickSort(nums, 0, len(nums)-1)
 }
 
 func _quickSort[T Num](nums []T, startIndex, endIndex int) {
-	if startIndex >= endIndex {
-		return
-	}
-	pivotIndex := partition(nums, startIndex, endIndex)
-	_quickSort(nums, startIndex, pivotIndex-1)
-	_quickSort(nums, pivotIndex+1, endIndex)
-}
-
-func partition[T Num](nums []T, startIndex, endIndex int) (index int) {
-	pivot := nums[0]
 	left, right := startIndex, endIndex
-	index = startIndex
+	if left < right {
+		pivot := nums[left]
+		for left != right {
 
-	for right > left {
-
-		// 从右侧向左侧遍历，直到遇到右侧的
-		for right > left {
-			if nums[right] < pivot {
-				nums[left] = nums[right]
-				index = right
-				left++
-				break
-			}
-			right--
-		}
-
-		for right > left {
-			if nums[left] > pivot {
-				nums[right] = nums[left]
-				index = left
+			for right > left && nums[right] >= pivot {
 				right--
-				break
 			}
-			left++
+			nums[left] = nums[right]
+
+			for left < right && nums[left] <= pivot {
+				left++
+			}
+			nums[right] = nums[left]
 		}
 
+		nums[right] = pivot
+		_quickSort(nums, startIndex, left-1)
+		_quickSort(nums, right+1, endIndex)
 	}
-	nums[index] = pivot
-	return
 }
 
 // 它重复地走访过要排序的元素列，依次比较两个相邻的元素，

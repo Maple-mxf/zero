@@ -1,0 +1,41 @@
+{
+  "sinkMetrics": [
+    [
+      {
+        "name": "mysql",
+        "running": true,
+        "cacheQueueSize": 0,
+        "activeCount": 1,
+        "corePoolSize": 1,
+        "poolSize": 1,
+        "completedTaskCount": 0,
+        "taskCount": 1,
+        "queueSize": 0,
+        "handleFailCount": 0,
+        "handleSuccessCount": 5864,
+        "time": "2022-12-30 19:25:52"
+      }
+    ]
+  ],
+  "sourceMetrics": [
+    [
+      {
+        "name": "mongo",
+        "running": true,
+        "cacheQueueSize": 0,
+        "activeCount": 1,
+        "corePoolSize": 10,
+        "poolSize": 2,
+        "completedTaskCount": 1,
+        "taskCount": 2,
+        "queueSize": 0,
+        "time": "2022-12-30 19:25:52",
+        "changeStreamExit": false,
+        "produceSuccessCount": 5864,
+        "produceFailCount": 0,
+        "syncStockCompleted": true,
+        "allowSyncStock": false
+      }
+    ]
+  ]
+}
